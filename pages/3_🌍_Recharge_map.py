@@ -11,42 +11,50 @@ st.set_page_config(
 )
 
 markdown = """
-This is an hydrological application
-link: <https://www.iac.sp.gov.br/>
+Esta página exibe mapas de recarga de aquífero
 """
 
-st.sidebar.title('About')
+st.sidebar.title('Sobre')
 st.sidebar.info(markdown)
 logo = 'pages/Logo_IAC_d400.jpg'
 st.sidebar.image(logo, width=100)
 
 ###############################################################################
 
-st.title('Página Recarga de aquífero')
-st.markdown('Gráficos e mapas sobre a recarga de aquífero')
+#Criando a sidebar
+sidebar = st.sidebar.empty()
+
+list_watersheds = ['Atibaia cabeceira', 'Camanducaia', 'Capivari', 'Corumbataí', 'Jundiaí']
+
+#Selectbox de seleção da bacia
+st.sidebar.header('Escolha uma bacia')
+watershed_select = st.sidebar.selectbox('Selecione', list_watersheds)
+
+#Mapas das bacias
+mapa_rec_atibaia_cab = 'pages/recharge_maps/rch_map_atibaia_cabeceira.png'
+mapa_rec_camanducaia = 'pages/recharge_maps/rch_map_camanducaia.png'
+mapa_rec_capivari = 'pages/recharge_maps/rch_map_capivari.png'
+mapa_rec_corumbatai = 'pages/recharge_maps/rch_map_corumbatai.png'
+mapa_rec_jundiai = 'pages/recharge_maps/rch_map_jundiai.png'
+
+if watershed_select == 'Atibaia cabeceira':
+    recharge_map = mapa_rec_atibaia_cab
+elif watershed_select == 'Camanducaia':
+    recharge_map = mapa_rec_camanducaia
+elif watershed_select == 'Capivari':
+    recharge_map = mapa_rec_capivari
+elif watershed_select == 'Corumbataí':
+    recharge_map = mapa_rec_corumbatai
+else:
+    recharge_map = mapa_rec_jundiai
+
+
+st.title('Recarga de aquíferos das sub-bacias PCJ')
+st.markdown('Mapas de recarga de aquíferos das sub-bacias PCJ')
 
 st.divider()
 
-mapa_recarga = 'pages/mapa_recarga.png'
-
-st.image(mapa_recarga, width=800)
+st.image(recharge_map, width=900)
 
 
 # st.divider()
-
-
-
-# limite = gpd.read_file(r'C:\Users\swat\Documents\app_vazao\Limite_municipal_linha.geojson')
-
-# louveira = [-23.0794, -46.9348]
-# m = folium.Map(location=louveira, tiles='cartodbpositron', control_scale=True, zoom_start=13, min_zoom=11)
-
-
-# # Limite municipal de Louveira
-# folium.GeoJson(limite, name = 'Limites Louveira', control = False, show = True,
-#                style_function = lambda x: {
-#                   'color': 'dodgerblue',
-#                   'weight': 3
-#                }).add_to(m)
-
-# st_mapa = st_folium(m, width=800, height=450)
