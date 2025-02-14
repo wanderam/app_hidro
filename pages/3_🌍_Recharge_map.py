@@ -54,6 +54,7 @@ st.markdown('Mapas de recarga de aquíferos das sub-bacias PCJ')
 
 st.divider()
 
+st.subheader(f'Bacia: {watershed_select}')
 st.image(recharge_map, width=900)
 
 
