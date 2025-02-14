@@ -17,7 +17,7 @@ link: <https://www.iac.sp.gov.br/>
 
 st.sidebar.title('About')
 st.sidebar.info(markdown)
-logo = r'pages\Logo_IAC_d400.jpg'
+logo = 'pages/Logo_IAC_d400.jpg'
 st.sidebar.image(logo, width=100)
 
 ###############################################################################
@@ -27,7 +27,7 @@ st.markdown('Gráficos e mapas sobre a recarga de aquífero')
 
 st.divider()
 
-mapa_recarga = r'C:\app_vazao\pages\mapa_recarga.png'
+mapa_recarga = 'pages/mapa_recarga.png'
 
 st.image(mapa_recarga, width=800)
 

@@ -20,7 +20,7 @@ link: <https://www.iac.sp.gov.br/>
 
 st.sidebar.title('About')
 st.sidebar.info(markdown)
-logo = r'.\pages\Logo_IAC_d400.jpg'
+logo = 'pages/Logo_IAC_d400.jpg'
 st.sidebar.image(logo, width=100)
 
 ###############################################################################
@@ -31,7 +31,7 @@ def load_data(file_path):
     df = pd.read_csv(file_path)
     return df
 
-df = load_data(r'.\pages\all.csv')
+df = load_data('pages/all.csv')
 
 
 # jndmirim = pd.read_csv(r'C:\Users\swat\Documents\app_vazao\pages\output_obs_jndmirim.csv')
@@ -52,9 +52,9 @@ sidebar = st.sidebar.empty()
 
 ################################################################
 #Mapas
-mapa_jndmirim = r'.\pages\map_jndmirim.jpg'
-mapa_capivari = r'.\pages\map_capivari.jpg'
-mapa_corumbatai = r'.\pages\map_corumbatai.jpg'
+mapa_jndmirim = 'pages/map_jndmirim.jpg'
+mapa_capivari = 'pages/map_capivari.jpg'
+mapa_corumbatai = 'pages/map_corumbatai.jpg'
 
 #Areas das bacias
 area_jndmirim = 95.45
