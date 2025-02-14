@@ -10,14 +10,17 @@ st.set_page_config(
     initial_sidebar_state='expanded'
 )
 
+#Texto na sidebar de apresentação do app
 markdown = """
-This is an hydrological application
-link: <https://www.iac.sp.gov.br/>
+Esta aplicação exibe dados da tese desenvolvida no PPG-IAC.
+
+IAC: <https://www.iac.sp.gov.br/>\n
+PG-IAC: <https://www.iac.sp.gov.br/areadoinstituto/posgraduacao/>
 """
 
-st.sidebar.title('About')
+st.sidebar.title('Sobre')
 st.sidebar.info(markdown)
-logo = r'Logo_IAC_d400.jpg'
+logo = 'Logo_IAC_d400.jpg'
 st.sidebar.image(logo, width=100)
 
 ###############################################################################
@@ -25,19 +28,20 @@ st.sidebar.image(logo, width=100)
 col1, col2 = st.columns([0.3, 0.7])
 
 with col1:
-    st.title('Página Incial do App')
+    st.title('App Hidro')
     st.markdown(
         """
-        This multipage app shows hydrological insights - <https://www.iac.sp.gov.br/>
+        Este aplicativo foi desenvolvido para divulgar parte dos resultados obtidos da tese desenvolvida no PPG-IAC.\n
+        Instituto Agronômico de Campinas (IAC) <https://www.iac.sp.gov.br/>
         """
     )
 
 ###############################################################################
 
-col2.header(':blue[PCJ] subbasins')
+col2.header('Sub-bacias :blue[PCJ]')
 
-subs_pcj = gpd.read_file(r'subs_pcj.geojson')                # Camada original --> C:\Users\swat\Documents\app_vazao\subs_pcj.geojson
-drenagem = gpd.read_file(r'rede_drenagem.geojson')           # Camada de drenagem também está simplificada
+subs_pcj = gpd.read_file('subs_pcj.geojson')                # Camada original --> C:\Users\swat\Documents\app_vazao\subs_pcj.geojson
+drenagem = gpd.read_file('rede_drenagem.geojson')           # Camada de drenagem também está simplificada
 
 
 centro = [-22.7956, -47.2072]
@@ -66,16 +70,16 @@ white_BG = folium.TileLayer(tiles=branca.utilities.image_to_url([[1,1], [1,1]]),
 #Função de destaque
 def highlight_function(feature):
     return {
-          'fillColor': 'yellow',
+          'fillColor': '#87d4af',
           'fillOpacity': 1.0,
-          'color': 'yellow',
+          'color': '#87d4af',
           'weight': 1.0
            }
 
 #Sub-bacias PCJ
 folium.GeoJson(subs_pcj, name='PCJ subbasins', control=True, show=True, zoom_on_click=False,
                tooltip = folium.GeoJsonTooltip(fields = ['SUBS'],
-                                               aliases = ['SUB:'],
+                                               aliases = ['SUB-BACIA:'],
                                                sticky = True,
                                                labels=True,
                                                style = """
