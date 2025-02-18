@@ -49,12 +49,30 @@ else:
     recharge_map = mapa_rec_jundiai
 
 
-st.title('Recarga de aquíferos das sub-bacias PCJ')
-st.markdown('Mapas de recarga de aquíferos das sub-bacias PCJ')
+st.title('Recarga de aquífero das sub-bacias PCJ')
+st.markdown('Mapas de recarga de aquífero mensal das sub-bacias PCJ para o período de Janeiro de 1985 a Dezembro de 2020.')
 
 st.divider()
 
-st.subheader(f'Bacia: {watershed_select}')
+atibaia_cabeceira_area = 1136.7
+camanducaia_area = 1040.1
+capivari_area = 1276.9
+corumbatai_area = 1704.2
+jundiai_area = 1125.2
+
+if watershed_select == 'Atibaia cabeceira':
+    area_bacia = atibaia_cabeceira_area
+elif watershed_select == 'Camanducaia':
+    area_bacia = camanducaia_area
+elif watershed_select == 'Capivari':
+    area_bacia = capivari_area
+elif watershed_select == 'Corumbataí':
+    area_bacia = corumbatai_area
+else:
+    area_bacia = jundiai_area
+
+
+st.subheader(f'Bacia: {watershed_select} | Área: {area_bacia} km$^{2}$')
 st.image(recharge_map, width=900)
 
 
